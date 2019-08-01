@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Moisés Arce on JI</title>
+    <link>/authors/moises-arce/</link>
+    <description>Recent content in Moisés Arce on JI</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="/authors/moises-arce/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Peru 2017: An extreme case of divided government</title>
+      <link>/publication/arce-peru-2018/</link>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/arce-peru-2018/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
