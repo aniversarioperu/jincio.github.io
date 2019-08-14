@@ -177,6 +177,11 @@
   </url>
   
   <url>
+    <loc>/p_extranjeros/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/test/</loc>
     <priority>0</priority>
   </url>
