@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on JI</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on JI</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy;{year}</copyright>
+    <lastBuildDate>Sun, 29 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Correlaciones en R</title>
+      <link>/post/test-ejemplo/</link>
+      <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/test-ejemplo/</guid>
+      <description>
+
+&lt;p&gt;Trabajemos con una data sencilla que viene con R. La famosa data &amp;ldquo;iris&amp;rdquo;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;data(iris) # llamo a la base de datos a mi entorno de trabajo. 
+head(iris) # damos una vista a los primeros casos de la base de datos. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quedemonos con las variables númericas para trabajar las correlaciones.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;nuevo&amp;lt;-iris[,-5]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;opciones-dentro-de-r&#34;&gt;Opciones dentro de R.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cor```&#34;&gt;
+
+```r
+cor(nuevo)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length    1.0000000  -0.1175698    0.8717538   0.8179411
+## Sepal.Width    -0.1175698   1.0000000   -0.4284401  -0.3661259
+## Petal.Length    0.8717538  -0.4284401    1.0000000   0.9628654
+## Petal.Width     0.8179411  -0.3661259    0.9628654   1.0000000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Podemos cambiar el tipo de estadístico. &amp;ldquo;Kendall&amp;rdquo;, &amp;ldquo;Spearman&amp;rdquo; son opciones dentro de cor.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;cor(nuevo, method=&amp;quot;kendall&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length   1.00000000 -0.07699679    0.7185159   0.6553086
+## Sepal.Width   -0.07699679  1.00000000   -0.1859944  -0.1571257
+## Petal.Length   0.71851593 -0.18599442    1.0000000   0.8068907
+## Petal.Width    0.65530856 -0.15712566    0.8068907   1.0000000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;correlaciones-parciales&#34;&gt;Correlaciones parciales&lt;/h2&gt;
+
+&lt;p&gt;Llamemos la libreria &amp;ldquo;ggm&amp;rdquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggm)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## Loading required package: igraph
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &#39;igraph&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     decompose, spectrum
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &#39;package:base&#39;:
+## 
+##     union
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &#39;ggm&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &#39;package:igraph&#39;:
+## 
+##     pa
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;names(iris)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Sepal.Length&amp;quot; &amp;quot;Sepal.Width&amp;quot;  &amp;quot;Petal.Length&amp;quot; &amp;quot;Petal.Width&amp;quot; 
+## [5] &amp;quot;Species&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;pcor(c(&amp;quot;Sepal.Length&amp;quot;,&amp;quot;Sepal.Width&amp;quot;,&amp;quot;Petal.Length&amp;quot;,&amp;quot;Petal.Width&amp;quot;), var(nuevo)) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## [1] 0.6285707
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;gráficos-correlaciones&#34;&gt;Gráficos correlaciones&lt;/h2&gt;
+
+&lt;p&gt;Super básico, un scatterplot o gráfico de dispersión.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot(nuevo[,1], nuevo[,3])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-29-test-ejemplo_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Agregando una línea de tendencia&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot(nuevo[,1], nuevo[,3])#Gráfico simple de dispersi?n de puntos. 
+abline(lm(nuevo[,3]~nuevo[,1]), col=&amp;quot;red&amp;quot;) # Agregando línea de tendencia. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-29-test-ejemplo_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Uno más complicado e informativo&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;pairs(~Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,data=nuevo, 
+   main=&amp;quot;matriz de correlaciones&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-29-test-ejemplo_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cambiando colores de los puntos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;pairs(~Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,data=nuevo, 
+   main=&amp;quot;matriz de correlaciones&amp;quot;, col=c(&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;)) #cambiando de color a los puntos de la matriz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-29-test-ejemplo_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;paquete-corrgram&#34;&gt;Paquete corrgram&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#install.packages(corrgram) # Por si no lo tienen instalado 
+library(corrgram)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## Registered S3 methods overwritten by &#39;ggplot2&#39;:
+##   method         from 
+##   [.quosures     rlang
+##   c.quosures     rlang
+##   print.quosures rlang
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## Registered S3 method overwritten by &#39;seriation&#39;:
+##   method         from 
+##   reorder.hclust gclus
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;corrgram(nuevo, order=TRUE, lower.panel=panel.pts,
+         upper.panel=panel.shade, text.panel=panel.txt,
+         diag.panel=panel.minmax, main=&amp;quot;Correlograma&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-29-test-ejemplo_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Algunas notas&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Se puede intercambiar los paneles con los que se detallan abajo.&lt;/li&gt;
+&lt;li&gt;Más información en &lt;code&gt;?corrgram&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;panel.pie (la parte llena del pie representa la magnitud de la correlación)&lt;/li&gt;
+&lt;li&gt;panel.shade (La profundidad del color representa la magnitud de la correlación)&lt;/li&gt;
+&lt;li&gt;panel.ellipse (ellipse en base al nivel de confianza y la l?nea de correlación)&lt;/li&gt;
+&lt;li&gt;panel.pts (dispersión de puntos)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Tengo un tutorial de R en español. Lo puede revisar aquí: &lt;a href=&#34;http://www.joseincio.com/R_tutorial/&#34; target=&#34;_blank&#34;&gt;http://www.joseincio.com/R_tutorial/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
