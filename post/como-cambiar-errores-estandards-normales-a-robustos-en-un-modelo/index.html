@@ -28,10 +28,13 @@
   
     
   
-  <meta name="description" content="Ph.D. Candidate Political Science">
+  <meta name="description" content="Usemos la data de gapminder:
+library(rio) data&lt;-import(&quot;https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv&quot;)  Hagamos una regresión simple con expectativa de vida como dependiente y gdpPercap y población (en logaritmo) como independiente
+m1=lm(lifeExp~gdpPercap&#43;log(pop), data=data)  Ahora pedimos los resultados con summary
+summary(m1)  ## ## Call: ## lm(formula = lifeExp ~ gdpPercap &#43; log(pop), data = data) ## ## Residuals: ## Min 1Q Median 3Q Max ## -77.315 -7.558 1.479 7.803 20.199 ## ## Coefficients: ## Estimate Std.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/">
+  <link rel="alternate" hreflang="en-us" href="/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/">
 
   
 
@@ -105,14 +108,12 @@
   
 
   
-  <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="JI">
-  
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/post/">
+  <link rel="canonical" href="/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/">
 
   
   
@@ -127,12 +128,17 @@
   <meta property="twitter:creator" content="@Jlincio">
   
   <meta property="og:site_name" content="JI">
-  <meta property="og:url" content="/post/">
-  <meta property="og:title" content="Posts | JI">
-  <meta property="og:description" content="Ph.D. Candidate Political Science"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:url" content="/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/">
+  <meta property="og:title" content="¿Cómo cambiar errores estandards normales a robustos en un modelo lineal?  | JI">
+  <meta property="og:description" content="Usemos la data de gapminder:
+library(rio) data&lt;-import(&quot;https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv&quot;)  Hagamos una regresión simple con expectativa de vida como dependiente y gdpPercap y población (en logaritmo) como independiente
+m1=lm(lifeExp~gdpPercap&#43;log(pop), data=data)  Ahora pedimos los resultados con summary
+summary(m1)  ## ## Call: ## lm(formula = lifeExp ~ gdpPercap &#43; log(pop), data = data) ## ## Residuals: ## Min 1Q Median 3Q Max ## -77.315 -7.558 1.479 7.803 20.199 ## ## Coefficients: ## Estimate Std."><meta property="og:image" content="/img/icon-192.png">
   <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-10-09T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2019-10-09T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-10-09T00:18:52-04:00">
   
 
   
@@ -144,7 +150,7 @@
 
 
 
-  <title>Posts | JI</title>
+  <title>¿Cómo cambiar errores estandards normales a robustos en un modelo lineal?  | JI</title>
 
 </head>
 
@@ -422,80 +428,33 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
+  <article class="article" itemscope itemtype="http://schema.org/Article">
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
   
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">¿Cómo cambiar errores estandards normales a robustos en un modelo lineal? </h1>
+
+  
+
   
     
-  
-<div class="universal-wrapper pt-3">
-  <h1 itemprop="name">Posts</h1>
-
-  
-
-  
-</div>
-
-
-
-<div class="universal-wrapper">
-
-  
-
-  
-  
-    
-      
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-<div class="media stream-item" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0" itemprop="name">
-      <a href="/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/" itemprop="url">¿Cómo cambiar errores estandards normales a robustos en un modelo lineal? </a>
-    </h3>
-
-    
-    <div class="article-style" itemprop="articleBody">
-      Usemos la data de gapminder:
-library(rio) …
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
 
 
 
@@ -535,121 +494,371 @@ library(rio) …
   
 
   
-
-</div>
-
-      
-    </div>
-
     
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-    
-  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
     
       
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-<div class="media stream-item" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0" itemprop="name">
-      <a href="/post/test-ejemplo/" itemprop="url">Correlaciones en R</a>
-    </h3>
-
-    
-    <div class="article-style" itemprop="articleBody">
-      Cómo probar y graficar correlaciones en R
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
       
-
       
         
-
-
-
-<meta content="2019-09-29 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-<meta content="2019-09-29 15:31:04 -0400 EDT" itemprop="dateModified">
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/&amp;text=%c2%bfC%c3%b3mo%20cambiar%20errores%20estandards%20normales%20a%20robustos%20en%20un%20modelo%20lineal?%20" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
     
       
-          Last updated on
       
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/&amp;t=%c2%bfC%c3%b3mo%20cambiar%20errores%20estandards%20normales%20a%20robustos%20en%20un%20modelo%20lineal?%20" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
     
-    <time>Sep 29, 2019</time>
-  </span>
-  
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%c2%bfC%c3%b3mo%20cambiar%20errores%20estandards%20normales%20a%20robustos%20en%20un%20modelo%20lineal?%20&amp;body=/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/&amp;title=%c2%bfC%c3%b3mo%20cambiar%20errores%20estandards%20normales%20a%20robustos%20en%20un%20modelo%20lineal?%20" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=%c2%bfC%c3%b3mo%20cambiar%20errores%20estandards%20normales%20a%20robustos%20en%20un%20modelo%20lineal?%20%20/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/&amp;title=%c2%bfC%c3%b3mo%20cambiar%20errores%20estandards%20normales%20a%20robustos%20en%20un%20modelo%20lineal?%20" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
 
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    3 min read
-  </span>
-  
-
-  
-  
-
-  
-  
 
   
 
 </div>
 
-      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      <p>Usemos la data de gapminder:</p>
+
+<pre><code class="language-r">library(rio)
+data&lt;-import(&quot;https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv&quot;)
+</code></pre>
+
+<p>Hagamos una regresión simple con expectativa de vida como dependiente y gdpPercap y población (en logaritmo) como independiente</p>
+
+<pre><code class="language-r">m1=lm(lifeExp~gdpPercap+log(pop), data=data)
+</code></pre>
+
+<p>Ahora pedimos los resultados con summary</p>
+
+<pre><code class="language-r">summary(m1)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = lifeExp ~ gdpPercap + log(pop), data = data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -77.315  -7.558   1.479   7.803  20.199 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 3.121e+01  2.454e+00  12.719   &lt;2e-16 ***
+## gdpPercap   7.612e-04  2.516e-05  30.252   &lt;2e-16 ***
+## log(pop)    1.445e+00  1.546e-01   9.345   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 10.23 on 1701 degrees of freedom
+## Multiple R-squared:  0.3729,	Adjusted R-squared:  0.3722 
+## F-statistic: 505.8 on 2 and 1701 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+<p>El resumen muestra los errores normales. Para estimar los errores robustos (robust standard errors) podemos usar el paquete <code>sandwich</code> y <code>lmtest</code></p>
+
+<p>Con la función <code>vcovHC</code> podemos obtener la matriz de varianzas y covarianzas.</p>
+
+<pre><code class="language-r">library(sandwich)
+vcovHC(m1, type = &quot;HC0&quot;) 
+</code></pre>
+
+<pre><code>##               (Intercept)     gdpPercap      log(pop)
+## (Intercept)  6.5237234376  1.090675e-04 -4.477830e-01
+## gdpPercap    0.0001090675  8.181630e-09 -1.024504e-05
+## log(pop)    -0.4477830082 -1.024504e-05  3.213692e-02
+</code></pre>
+
+<p>Y si complementamos eso con <code>coeftest</code> podemos probar si los coeficientes son significativos usando los errores standard robustos.</p>
+
+<pre><code class="language-r">library(lmtest)
+coef2&lt;-coeftest(m1, vcov = vcovHC(m1, &quot;HC0&quot;)) 
+</code></pre>
+
+<p>Remplacemos el resumen del modelo usando estos errores estandards.</p>
+
+<pre><code class="language-r">sum1&lt;-summary(m1)
+sum1$coefficients[,2]&lt;-coef2[,2]
+</code></pre>
+
+<p>Comparemos:</p>
+
+<pre><code class="language-r">summary(m1)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = lifeExp ~ gdpPercap + log(pop), data = data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -77.315  -7.558   1.479   7.803  20.199 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 3.121e+01  2.454e+00  12.719   &lt;2e-16 ***
+## gdpPercap   7.612e-04  2.516e-05  30.252   &lt;2e-16 ***
+## log(pop)    1.445e+00  1.546e-01   9.345   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 10.23 on 1701 degrees of freedom
+## Multiple R-squared:  0.3729,	Adjusted R-squared:  0.3722 
+## F-statistic: 505.8 on 2 and 1701 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+<pre><code class="language-r">sum1
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = lifeExp ~ gdpPercap + log(pop), data = data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -77.315  -7.558   1.479   7.803  20.199 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 3.121e+01  2.554e+00  12.719   &lt;2e-16 ***
+## gdpPercap   7.612e-04  9.045e-05  30.252   &lt;2e-16 ***
+## log(pop)    1.445e+00  1.793e-01   9.345   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 10.23 on 1701 degrees of freedom
+## Multiple R-squared:  0.3729,	Adjusted R-squared:  0.3722 
+## F-statistic: 505.8 on 2 and 1701 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+<p>Tengo un tutorial de R en español. Lo puede revisar aquí: <a href="http://www.joseincio.com/R_tutorial/" target="_blank">http://www.joseincio.com/R_tutorial/</a></p>
+
     </div>
 
     
 
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/r/">R</a>
+  
 </div>
 
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
     
   
-
   
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar1_hu2a7fdbfacef80be922176e8dd4ff69a0_1044511_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="/">José Incio</a></h5>
+      <h6 class="card-subtitle">Ph.D. Candidate Political Science</h6>
+      <p class="card-text" itemprop="description">My research interests include subnational politics, democracy, representation and political methodology.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+          <li>
+            <a itemprop="sameAs" href="mailto:j.incio@pitt.edu" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://twitter.com/Jlincio" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://scholar.google.com/citations?user=XaJuxzwAAAAJ&amp;hl=es" target="_blank" rel="noopener">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/Jlincio" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
 
-</div>
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/test-ejemplo/">Correlaciones en R</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
 
       
 

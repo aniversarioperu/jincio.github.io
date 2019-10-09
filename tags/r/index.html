@@ -132,7 +132,7 @@
   <meta property="og:description" content="Ph.D. Candidate Political Science"><meta property="og:image" content="/img/icon-192.png">
   <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-09-29T00:00:00&#43;00:00">
+  <meta property="og:updated_time" content="2019-10-09T00:00:00&#43;00:00">
   
 
   
@@ -456,6 +456,18 @@
   
 
   
+  
+  <div>
+    <h2><a href="/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/">¿Cómo cambiar errores estandards normales a robustos en un modelo lineal? </a></h2>
+    <div class="article-style">
+      
+      Usemos la data de gapminder:
+library(rio) data&lt;-import(&quot;https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv&quot;)  Hagamos una regresión simple con expectativa de vida como dependiente y gdpPercap y población (en logaritmo) como independiente
+m1=lm(lifeExp~gdpPercap+log(pop), data=data)  Ahora pedimos los resultados con summary
+summary(m1)  ## ## Call: ## lm(formula = lifeExp ~ gdpPercap + log(pop), data = data) ## ## Residuals: ## Min 1Q Median 3Q Max ## -77.315 -7.558 1.479 7.803 20.199 ## ## Coefficients: ## Estimate Std.
+      
+    </div>
+  </div>
   
   <div>
     <h2><a href="/post/test-ejemplo/">Correlaciones en R</a></h2>
