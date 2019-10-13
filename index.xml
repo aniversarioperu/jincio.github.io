@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy;{year}</copyright>
-    <lastBuildDate>Wed, 09 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 11 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -128,6 +128,81 @@ chunks within the document. You can embed an R code chunk like this:&lt;/p&gt;
 
 &lt;p&gt;Note that the &lt;code&gt;echo = FALSE&lt;/code&gt; parameter was added to the code chunk to
 prevent printing of the R code that generated the plot.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>El efecto de la migración venezolana en el Perú</title>
+      <link>/post/venezolanos-en-peru-para-que-no-te-enganen-o-desinformen/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/venezolanos-en-peru-para-que-no-te-enganen-o-desinformen/</guid>
+      <description>
+
+&lt;p&gt;El BBVA Research publicó el jueves 10 de Octubre el informe del estudio sobre los efectos de la migración venezolana en Perú.&lt;/p&gt;
+
+&lt;p&gt;Resumo aquí los hallazgos más importantes, para estar informados y no ayudar a la desinformación.&lt;/p&gt;
+
+&lt;h2 id=&#34;cuando-te-digan-el-venezolano-es-ignorante&#34;&gt;Cuando te digan: El Venezolano es ignorante!&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Mayor educación&lt;/strong&gt;, el/la venezolan@ que llega a Perú tiene en promedio más años de educación que el peruano promedio. El/la Peruan@ promedio tiene 10.5 años de educación formal, el/la venezolan@ tiene 13.4&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cuando-te-digan-yo-solo-veo-venezolanos-en-la-calle-vagando-no-trabajan&#34;&gt;Cuando te digan: Yo solo veo venezolanos en la calle vagando! no trabajan!&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;La mayoría trabaja&lt;/strong&gt; El 92% son parte de la PEA activa (chambeando 86%  o buscando chamba 6%). Es decir por cada 100 venezolanos, 86 están trabajando, 6 están buscando activamente un trabajo, y 8 no trabajan ni buscan empleo (usualmente personas mayores etc)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Los que trabajan estan en su trabajo no en la calle! ;)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Trabajan más (o los explotan más)&lt;/strong&gt; Mientras que el peruano promedio trabaja 41 horas, el/la venezolana trabaja 60 horas&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;cuando-te-digan-los-las-venezolonos-as-no-dejan-nada-no-pagan-impuestos&#34;&gt;Cuando te digan: Los/las venezolonos/as no dejan nada! No pagan impuestos.&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;IGV&lt;/strong&gt; Los/las venezolanas/os estarían aumentando la recaudación entre 175 y 932 millones de soles (2018) y eso puede aumentar hasta 1204 millones de soles (2019)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;renta&lt;/strong&gt; se estima que en el 2018 dejaron 73 millones de soles de impuesto a la renta y el monto puede subir a 339 millones en el 2019.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;ok-pagan-impuestos-pero-también-usan-los-servicios-públicos&#34;&gt;OK pagan impuestos pero también usan los servicios públicos&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Positivo&lt;/strong&gt; El impacto sigue siendo positivo. El ingreso por IGV, Renta etc.. es de 598 millones y el gasto no pasa los 100..!!!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/impacto_gasto.png&#34; alt=&#34;gasto&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;el-pbi&#34;&gt;El PBI.&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Aumento y aumenta&lt;/strong&gt; gracias a la migración venezolana mira la imagen.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/impacto_pbi.png&#34; alt=&#34;pbi&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;a-mi-me-robo-un-venezolano&#34;&gt;A mi me robo un venezolano!&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Puede ser, a mi me robo un limeño y no ando estigmatizando a todos los limeños.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;los-as-venezolanos-as-votan-en-las-elecciones&#34;&gt;Los/as venezolanos/as votan en las elecciones!&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;NO&lt;/strong&gt; extranjeros no votan en elecciones CONGRESALES. Pueden votar en las elecciones municipales. Ahora bien, en la elección anterior solo votaron 26 extranjeros!, y dos de ellos venezolanos. Que no te engañen.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;qué-falta&#34;&gt;¿Qué falta?&lt;/h2&gt;
+
+&lt;p&gt;Deberiamos aprovechar la oportunidad que da la migración. Por ejemplo ingeniería y educación son las carreras más estudiadas por los/las venezolanos/as. En lugar de generar desconfianza y xenófobia deberiamos incentivar que los migrantes aporten en lugares donde hace faltan esos profesionales.&lt;/p&gt;
+
+&lt;p&gt;Fuente:
+&lt;a href=&#34;https://www.bbvaresearch.com/publicaciones/inmigracion-venezolana-a-peru-caracteristicas-e-impactos-macroeconomicos/&#34; target=&#34;_blank&#34;&gt;https://www.bbvaresearch.com/publicaciones/inmigracion-venezolana-a-peru-caracteristicas-e-impactos-macroeconomicos/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
