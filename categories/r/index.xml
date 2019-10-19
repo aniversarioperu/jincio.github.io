@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on JI</title>
+    <link>/categories/r/</link>
+    <description>Recent content in R on JI</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy;{year}</copyright>
+    <lastBuildDate>Wed, 09 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>¿Cómo cambiar errores estandards normales a robustos en un modelo lineal? </title>
+      <link>/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/</link>
+      <pubDate>Wed, 09 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/como-cambiar-errores-estandards-normales-a-robustos-en-un-modelo/</guid>
+      <description>&lt;p&gt;Usemos la data de gapminder:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(rio)
+data&amp;lt;-import(&amp;quot;https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hagamos una regresión simple con expectativa de vida como dependiente y gdpPercap y población (en logaritmo) como independiente&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;m1=lm(lifeExp~gdpPercap+log(pop), data=data)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ahora pedimos los resultados con summary&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;summary(m1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = lifeExp ~ gdpPercap + log(pop), data = data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -77.315  -7.558   1.479   7.803  20.199 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) 3.121e+01  2.454e+00  12.719   &amp;lt;2e-16 ***
+## gdpPercap   7.612e-04  2.516e-05  30.252   &amp;lt;2e-16 ***
+## log(pop)    1.445e+00  1.546e-01   9.345   &amp;lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 10.23 on 1701 degrees of freedom
+## Multiple R-squared:  0.3729,	Adjusted R-squared:  0.3722 
+## F-statistic: 505.8 on 2 and 1701 DF,  p-value: &amp;lt; 2.2e-16
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;El resumen muestra los errores normales. Para estimar los errores robustos (robust standard errors) podemos usar el paquete &lt;code&gt;sandwich&lt;/code&gt; y &lt;code&gt;lmtest&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Con la función &lt;code&gt;vcovHC&lt;/code&gt; podemos obtener la matriz de varianzas y covarianzas.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(sandwich)
+vcovHC(m1, type = &amp;quot;HC0&amp;quot;) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##               (Intercept)     gdpPercap      log(pop)
+## (Intercept)  6.5237234376  1.090675e-04 -4.477830e-01
+## gdpPercap    0.0001090675  8.181630e-09 -1.024504e-05
+## log(pop)    -0.4477830082 -1.024504e-05  3.213692e-02
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Y si complementamos eso con &lt;code&gt;coeftest&lt;/code&gt; podemos probar si los coeficientes son significativos usando los errores standard robustos.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(lmtest)
+coef2&amp;lt;-coeftest(m1, vcov = vcovHC(m1, &amp;quot;HC0&amp;quot;)) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Remplacemos el resumen del modelo usando estos errores estandards.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;sum1&amp;lt;-summary(m1)
+sum1$coefficients[,2]&amp;lt;-coef2[,2]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Comparemos:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;summary(m1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = lifeExp ~ gdpPercap + log(pop), data = data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -77.315  -7.558   1.479   7.803  20.199 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) 3.121e+01  2.454e+00  12.719   &amp;lt;2e-16 ***
+## gdpPercap   7.612e-04  2.516e-05  30.252   &amp;lt;2e-16 ***
+## log(pop)    1.445e+00  1.546e-01   9.345   &amp;lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 10.23 on 1701 degrees of freedom
+## Multiple R-squared:  0.3729,	Adjusted R-squared:  0.3722 
+## F-statistic: 505.8 on 2 and 1701 DF,  p-value: &amp;lt; 2.2e-16
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;sum1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = lifeExp ~ gdpPercap + log(pop), data = data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -77.315  -7.558   1.479   7.803  20.199 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) 3.121e+01  2.554e+00  12.719   &amp;lt;2e-16 ***
+## gdpPercap   7.612e-04  9.045e-05  30.252   &amp;lt;2e-16 ***
+## log(pop)    1.445e+00  1.793e-01   9.345   &amp;lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 10.23 on 1701 degrees of freedom
+## Multiple R-squared:  0.3729,	Adjusted R-squared:  0.3722 
+## F-statistic: 505.8 on 2 and 1701 DF,  p-value: &amp;lt; 2.2e-16
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tengo un tutorial de R en español. Lo puede revisar aquí: &lt;a href=&#34;http://www.joseincio.com/R_tutorial/&#34; target=&#34;_blank&#34;&gt;http://www.joseincio.com/R_tutorial/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Correlaciones en R</title>
+      <link>/post/test-ejemplo/</link>
+      <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/test-ejemplo/</guid>
+      <description>
+
+&lt;p&gt;Trabajemos con una data sencilla que viene con R. La famosa data &amp;ldquo;iris&amp;rdquo;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;data(iris) # llamo a la base de datos a mi entorno de trabajo. 
+head(iris) # damos una vista a los primeros casos de la base de datos. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quedemonos con las variables númericas para trabajar las correlaciones.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;nuevo&amp;lt;-iris[,-5]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;opciones-dentro-de-r&#34;&gt;Opciones dentro de R.&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cor```&#34;&gt;
+
+```r
+cor(nuevo)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length    1.0000000  -0.1175698    0.8717538   0.8179411
+## Sepal.Width    -0.1175698   1.0000000   -0.4284401  -0.3661259
+## Petal.Length    0.8717538  -0.4284401    1.0000000   0.9628654
+## Petal.Width     0.8179411  -0.3661259    0.9628654   1.0000000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Podemos cambiar el tipo de estadístico. &amp;ldquo;Kendall&amp;rdquo;, &amp;ldquo;Spearman&amp;rdquo; son opciones dentro de cor.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;cor(nuevo, method=&amp;quot;kendall&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length   1.00000000 -0.07699679    0.7185159   0.6553086
+## Sepal.Width   -0.07699679  1.00000000   -0.1859944  -0.1571257
+## Petal.Length   0.71851593 -0.18599442    1.0000000   0.8068907
+## Petal.Width    0.65530856 -0.15712566    0.8068907   1.0000000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;correlaciones-parciales&#34;&gt;Correlaciones parciales&lt;/h2&gt;
+
+&lt;p&gt;Llamemos la libreria &amp;ldquo;ggm&amp;rdquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggm)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## Loading required package: igraph
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &#39;igraph&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     decompose, spectrum
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &#39;package:base&#39;:
+## 
+##     union
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &#39;ggm&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &#39;package:igraph&#39;:
+## 
+##     pa
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;names(iris)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Sepal.Length&amp;quot; &amp;quot;Sepal.Width&amp;quot;  &amp;quot;Petal.Length&amp;quot; &amp;quot;Petal.Width&amp;quot; 
+## [5] &amp;quot;Species&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;pcor(c(&amp;quot;Sepal.Length&amp;quot;,&amp;quot;Sepal.Width&amp;quot;,&amp;quot;Petal.Length&amp;quot;,&amp;quot;Petal.Width&amp;quot;), var(nuevo)) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## [1] 0.6285707
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;gráficos-correlaciones&#34;&gt;Gráficos correlaciones&lt;/h2&gt;
+
+&lt;p&gt;Super básico, un scatterplot o gráfico de dispersión.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot(nuevo[,1], nuevo[,3])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-29-test-ejemplo_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Agregando una línea de tendencia&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;plot(nuevo[,1], nuevo[,3])#Gráfico simple de dispersi?n de puntos. 
+abline(lm(nuevo[,3]~nuevo[,1]), col=&amp;quot;red&amp;quot;) # Agregando línea de tendencia. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-29-test-ejemplo_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Uno más complicado e informativo&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;pairs(~Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,data=nuevo, 
+   main=&amp;quot;matriz de correlaciones&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-29-test-ejemplo_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cambiando colores de los puntos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;pairs(~Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,data=nuevo, 
+   main=&amp;quot;matriz de correlaciones&amp;quot;, col=c(&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;)) #cambiando de color a los puntos de la matriz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-29-test-ejemplo_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;paquete-corrgram&#34;&gt;Paquete corrgram&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#install.packages(corrgram) # Por si no lo tienen instalado 
+library(corrgram)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## Registered S3 methods overwritten by &#39;ggplot2&#39;:
+##   method         from 
+##   [.quosures     rlang
+##   c.quosures     rlang
+##   print.quosures rlang
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## Registered S3 method overwritten by &#39;seriation&#39;:
+##   method         from 
+##   reorder.hclust gclus
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;corrgram(nuevo, order=TRUE, lower.panel=panel.pts,
+         upper.panel=panel.shade, text.panel=panel.txt,
+         diag.panel=panel.minmax, main=&amp;quot;Correlograma&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2019-09-29-test-ejemplo_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Algunas notas&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Se puede intercambiar los paneles con los que se detallan abajo.&lt;/li&gt;
+&lt;li&gt;Más información en &lt;code&gt;?corrgram&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;panel.pie (la parte llena del pie representa la magnitud de la correlación)&lt;/li&gt;
+&lt;li&gt;panel.shade (La profundidad del color representa la magnitud de la correlación)&lt;/li&gt;
+&lt;li&gt;panel.ellipse (ellipse en base al nivel de confianza y la l?nea de correlación)&lt;/li&gt;
+&lt;li&gt;panel.pts (dispersión de puntos)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Tengo un tutorial de R en español. Lo puede revisar aquí: &lt;a href=&#34;http://www.joseincio.com/R_tutorial/&#34; target=&#34;_blank&#34;&gt;http://www.joseincio.com/R_tutorial/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
