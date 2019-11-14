@@ -7,10 +7,184 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy;{year}</copyright>
-    <lastBuildDate>Wed, 09 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>¿Cómo Filtrar una base en R usando dplyr?</title>
+      <link>/post/como-filtrar-una-base-en-r-usando-dplyr/</link>
+      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/como-filtrar-una-base-en-r-usando-dplyr/</guid>
+      <description>
+
+&lt;p&gt;Juguemos con la data de Gapminder
+  - Usamos la función import del paquete &lt;code&gt;rio&lt;/code&gt; llamamos a la data.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(rio)
+data&amp;lt;-import(&amp;quot;https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Demos un vistazo a la data usando head()&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;head(data, 10)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##        country year      pop continent lifeExp gdpPercap
+## 1  Afghanistan 1952  8425333      Asia  28.801  779.4453
+## 2  Afghanistan 1957  9240934      Asia  30.332  820.8530
+## 3  Afghanistan 1962 10267083      Asia  31.997  853.1007
+## 4  Afghanistan 1967 11537966      Asia  34.020  836.1971
+## 5  Afghanistan 1972 13079460      Asia  36.088  739.9811
+## 6  Afghanistan 1977 14880372      Asia  38.438  786.1134
+## 7  Afghanistan 1982 12881816      Asia  39.854  978.0114
+## 8  Afghanistan 1987 13867957      Asia  40.822  852.3959
+## 9  Afghanistan 1992 16317921      Asia  41.674  649.3414
+## 10 Afghanistan 1997 22227415      Asia  41.763  635.3414
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Empecemos a filtrar.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Queremos tener la información solo sobre el continente Americano&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Primero veamos que continentes están incluidos en la data
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;table(data$continent)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+##   Africa Americas     Asia   Europe  Oceania 
+##      624      300      396      360       24
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Nos quedaremo con &amp;ldquo;Americas&amp;rdquo;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1) Método tradicional. Usando las dimensiones de la data. La data tiene dos dimensiones filas y columnas. Podemos filtrar las &amp;ldquo;filas&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;data1= data[data$continent==&amp;quot;Americas&amp;quot;,]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Es clave entender que los corchetes y las comas me permiten identificar las dimensiones. &lt;code&gt;[ filas, columnas ]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;En este caso he creado un nuevo objeto filtrando las filas que coinciden con mi criterio.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;table(data1$continent)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Americas 
+##      300
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ahora usando la función filter de Dplyr.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(dplyr)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &#39;dplyr&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;data1&amp;lt;-data%&amp;gt;%filter(continent==&amp;quot;Americas&amp;quot;)
+table(data1$continent)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Americas 
+##      300
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Tener en cuenta: dplyr usa el %&amp;gt;% que es como decir &amp;ldquo;lo de la izquierda tiralo hacia la derecha&amp;rdquo;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mira este gif que lo explica con Mario Bros&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/daniellequinn88/status/1193777505746014209&#34; target=&#34;_blank&#34;&gt;Aquí&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;cuál-es-la-ventaja-de-dplyr&#34;&gt;¿Cuál es la ventaja de Dplyr?&lt;/h2&gt;
+
+&lt;p&gt;Que con dplyr puedes armar filtros más complejos en una misma línea sin que el código se complique mucho.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, si queremos filtrar los países de America, pero que tengan una pbi per capita mayor a 700, y solo necesitamos datos del 2000 hacia adelante el código usando las dimensiones de la data sería muy emarañado/confuso.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;data1= data[data$continent==&amp;quot;Americas&amp;quot;&amp;amp;data$gdpPercap&amp;gt;700&amp;amp;data$year&amp;gt;2000,]
+head(data1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##       country year       pop continent lifeExp gdpPercap
+## 59  Argentina 2002  38331121  Americas  74.340  8797.641
+## 60  Argentina 2007  40301927  Americas  75.320 12779.380
+## 143   Bolivia 2002   8445134  Americas  63.883  3413.263
+## 144   Bolivia 2007   9119152  Americas  65.554  3822.137
+## 179    Brazil 2002 179914212  Americas  71.006  8131.213
+## 180    Brazil 2007 190010647  Americas  72.390  9065.801
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Con Dplyr&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;data1=data%&amp;gt;%filter(continent==&amp;quot;Americas&amp;quot;,gdpPercap&amp;gt;700,year&amp;gt;2000)
+head(data1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;##     country year       pop continent lifeExp gdpPercap
+## 1 Argentina 2002  38331121  Americas  74.340  8797.641
+## 2 Argentina 2007  40301927  Americas  75.320 12779.380
+## 3   Bolivia 2002   8445134  Americas  63.883  3413.263
+## 4   Bolivia 2007   9119152  Americas  65.554  3822.137
+## 5    Brazil 2002 179914212  Americas  71.006  8131.213
+## 6    Brazil 2007 190010647  Americas  72.390  9065.801
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Además lo interesante de Dplyr es que te permite conectar funciones. Lo que hace el código más eficiente. Por ejemplo, quiero hacer una regresión pero usando los casos filtrados en el paso anterior, con dplyr no necesito crear ningún objeto nuevo.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;data%&amp;gt;%filter(continent==&amp;quot;Americas&amp;quot;,gdpPercap&amp;gt;700,year&amp;gt;2000)%&amp;gt;%
+  lm(lifeExp~gdpPercap, data=.)%&amp;gt;%summary()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = lifeExp ~ gdpPercap, data = .)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -12.2846  -1.2025   0.1773   2.4929   5.9131 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) 7.005e+01  7.970e-01  87.891  &amp;lt; 2e-16 ***
+## gdpPercap   2.922e-04  5.829e-05   5.013 7.71e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.778 on 48 degrees of freedom
+## Multiple R-squared:  0.3436,	Adjusted R-squared:   0.33 
+## F-statistic: 25.13 on 1 and 48 DF,  p-value: 7.714e-06
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>¿Cómo cambiar errores estandards normales a robustos en un modelo lineal? </title>
