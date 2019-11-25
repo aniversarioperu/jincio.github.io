@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>&amp;copy;{year}</copyright>
-    <lastBuildDate>Thu, 14 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -128,6 +128,84 @@ chunks within the document. You can embed an R code chunk like this:&lt;/p&gt;
 
 &lt;p&gt;Note that the &lt;code&gt;echo = FALSE&lt;/code&gt; parameter was added to the code chunk to
 prevent printing of the R code that generated the plot.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Decide bien! Elecciones congresales 2020</title>
+      <link>/post/decide-bien-elecciones-congresales-2020/</link>
+      <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/decide-bien-elecciones-congresales-2020/</guid>
+      <description>
+
+&lt;p&gt;Motivado por la necesidad de poder contribuir con algo en estas elecciones, además de mis ganas de procrastinar, arme una aplicación para ayudar a todos a tomar una decisión informada. La idea es ayudar a resumir y procesar información para el elector.&lt;/p&gt;
+
+&lt;p&gt;El app facilita filtros que el elector puede decidir usar o no, y dependiendo lo que el elector decida se muestran las listas congresales que cumplen sus preferencias. Abajo describo los filtros y la fuente de información.&lt;/p&gt;
+
+&lt;h2 id=&#34;aportantes&#34;&gt;Aportantes&lt;/h2&gt;
+
+&lt;p&gt;Trabajé en esta aplicación en mi tiempo libre, y es con lo que puedo contribuir en esta elección. Sin embargo, publicar el app y asegurarse que este activa tiene un costo económico significativo. Para mantenerla en línea utilizo el servicio de shinny.io.&lt;/p&gt;
+
+&lt;p&gt;He recibido el apoyo de Asociación Civil Transparencia, quienes además de apoyar económicamente para mantener el app en línea estan canalizando los esfuerzos para recolectar información y agregar más filtros. Si quieres apoyar en la tarea de recolectar informacieon comunicate con Karina Huaraca (khuaraca@transparencia.org.pe.)&lt;/p&gt;
+
+&lt;p&gt;También amig@s están colaborando de manera desinteresada con $ para mantener el app en línea y gracias a ese apoyo desinteresado es que el app puede mantenerse en la nube. Si estas interesado en apoyar escribeme a jincio@gmail.com. Donantes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Angelina Cotler
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Nota: De recolectar más dinero del necesario donaré el restante a alguna ONG/Organización que tenga iniciativas ecológicas (reforestación, reciclaje, etc)&lt;/p&gt;
+
+&lt;h2 id=&#34;filtros&#34;&gt;Filtros&lt;/h2&gt;
+
+&lt;p&gt;Los filtros disponibles son:&lt;/p&gt;
+
+&lt;h3 id=&#34;ex-congresistas&#34;&gt;Ex congresistas.&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Ex-congresistas fujimoristas:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ninguno: Muestra listas que NO incluyan ex-congresistas electos por Fuerza Popular en el 2016. &lt;em&gt;Fuente&lt;/em&gt;: JNE-INFOGOB&lt;/li&gt;
+&lt;li&gt;Con alguno: No aplica este filtro&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Ex-congresistas apristas:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ninguno: Muestra listas que NO incluyan ex-congresistas electos por el partido Aprista en el 2016 (Alianza Popular).&lt;em&gt;Fuente&lt;/em&gt;: JNE-INFOGOB&lt;/li&gt;
+&lt;li&gt;Con alguno: No aplica este filtro&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Ex-congresistas de cualquier partido:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ninguno: Muestra listas que contengan al menos un ex-congresista electo en el 2016. &lt;em&gt;Fuente&lt;/em&gt;: JNE-INFOGOB&lt;/li&gt;
+&lt;li&gt;Con alguno: No aplica este filtro&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;paridad&#34;&gt;Paridad&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Esfuerzo extra cuota&lt;/strong&gt;
+  - Sí: Se muestran listas que hayan incluido AL MENOS una candidata más de lo exigido por la cuota. Para algunas circunscripciones incluir una candidata más no es suficiente para alcanzar la parida.
+  - No es necesario: No se aplica este filtro.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Paridad&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sí: Se muestran listas en las que al menos tengan 50% de candidatas mujeres. Nota: Para ICA, CALLAO, LIMA PROVINCIAS, LORETO, y SAN MARTÍN tienen una cuota del 50% (2, de 4). Fuente &lt;em&gt;JNE&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;No es necesario: No se aplica este filtro
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cabeza de listas:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sí: Muestra listas en las que el número 1 es para una candidata mujer. Nota: Para ICA, CALLAO, LIMA PROVINCIAS, LORETO, y SAN MARTÍN tienen una cuota del 50% (2, de 4)&lt;/li&gt;
+&lt;li&gt;No es necesario: No se aplica este filtro.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
