@@ -22,7 +22,7 @@
 
 &lt;p&gt;Motivado por la necesidad de poder contribuir con algo en estas elecciones, además de mis ganas de procrastinar, arme una aplicación para ayudar a todos a tomar una decisión informada. La idea es ayudar a resumir y procesar información para el elector.&lt;/p&gt;
 
-&lt;p&gt;El app facilita filtros que el elector puede decidir usar o no, y dependiendo lo que el elector decida se muestran las listas congresales que cumplen sus preferencias. Abajo describo los filtros y la fuente de información.&lt;/p&gt;
+&lt;p&gt;El app &lt;a href=&#34;www.decidebien.pe&#34; target=&#34;_blank&#34;&gt;www.decidebien.pe&lt;/a&gt; facilita filtros que el elector puede decidir usar o no, y dependiendo lo que el elector decida se muestran las listas congresales que cumplen sus preferencias. Abajo describo los filtros y la fuente de información.&lt;/p&gt;
 
 &lt;h2 id=&#34;aportantes&#34;&gt;Aportantes&lt;/h2&gt;
 
@@ -87,6 +87,29 @@
 &lt;li&gt;No es necesario: No se aplica este filtro.
 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&#34;sentencias&#34;&gt;Sentencias&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Sentencias Penales&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sin Sentencias: Muestra listas sin candidatos con sentencias declaradas en la hoja de vida.&lt;/li&gt;
+&lt;li&gt;No me importa: No se aplica este filtro.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sección de la Hoja de vida:&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Indique las sentencias condenatorias firmes impuestas por delitos dolosos y la que incluye las sentencias con reserva del fallo condenatorio&amp;rdquo;
+&lt;strong&gt;Sentencias Penales (Alimentos)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sin Sentencias: Muestra listas sin candidatos con sentencias declaradas en la hoja de vida.&lt;/li&gt;
+&lt;li&gt;No me importa: No se aplica este filtro.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sección de la Hoja de vida:&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;RELACIÓN DE SENTENCIAS QUE DECLAREN FUNDADAS LAS DEMANDAS INTERPUESTAS CONTRA LOS CANDIDATOS(AS) POR INCUMPLIMIENTO DE OBLIGACIONES ALIMENTARIAS, CONTRACTUALES, LABORALES O POR INCURRIR EN VIOLENCIA FAMILIAR, QUE HUBIERAN QUEDADO FIRMES&amp;rdquo;&lt;/p&gt;
 </description>
     </item>
     
